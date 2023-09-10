@@ -1,22 +1,12 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Tattoos"
+const allPosts = await Astro.glob('./posts/*.md');
+import Post from "../components/Post.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-    <Header />
-	<body>
-		<h1>{pageTitle}</h1>
-		<Footer />
-		<script>import "../scripts/hamburger.js"</script>
-	</body>
-</html>
+<BaseLayout pageTitle={ pageTitle }>
+    <ul>
+        { allPosts.map((post) => <Post url={ post.url } title = { post.frontmatter.title }/>) }
+    </ul>
+</BaseLayout>

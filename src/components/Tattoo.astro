@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import { h } from 'preact';
+import { useState } from 'preact/hooks';
+
+const { imageSource, altText } = Astro.props;
+const width = 100;
+const height = 100;
+---
+
+<div class="tattoo">
+    <Image src={ imageSource } alt={ altText }/>
+    <div class="description"></div>
+</div>
+
+<style>
+    @media screen and (min-width: 636px) {
+        .tattoo {
+            width: 100%;
+        }
+    }
+    .tattoo {
+        width: 70%;
+    }
+
+    .description {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
