@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+
+const { imageSource, altText, description } = Astro.props;
+---
+
+<div class="Art">
+    <Image
+        class="bgImage"
+        src={imageSource}
+        alt={altText}
+        width="800"
+        height="600"
+    />
+    <div class="descriptionWrapper">
+        <p class="description">{description}</p>
+    </div>
+</div>
+
+<style>
+
+    .Art {
+        position: relative;
+        display: inline-block;
+    }
+
+    .bgImage {
+        vertical-align: bottom;
+        object-fit: cover;
+    }
+
+    .descriptionWrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(36, 62, 206, 0.6);
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* transition effect. not necessary */
+        transition:
+            opacity 0.2s,
+            visibility 0.2s;
+    }
+
+    .Art:hover .descriptionWrapper {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .description {
+        width: 80%;
+        transition: 0.2s;
+        transform: translateY(1em);
+        text-align: center;
+    }
+
+    .Art:hover .description {
+        transform: translateY(0);
+    }
+</style>

@@ -1,12 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Tattoos"
-const allPosts = await Astro.glob('./posts/*.md');
-import Post from "../components/Post.astro";
+import tattooURLs from '../../public/tattoos.json';
+import Art from "../components/Art.astro";
 ---
 
 <BaseLayout pageTitle={ pageTitle }>
     <ul>
-        { allPosts.map((post) => <Post url={ post.url } title = { post.frontmatter.title }/>) }
+        {
+            tattooURLs['resources'].map((res) => (
+                <li>
+                    <Art src={ res['secure_url'] } altText="Tattoo" description="Placeholder Description"/>
+                </li>
+            ))
+        }
     </ul>
 </BaseLayout>

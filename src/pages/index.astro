@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
+import Tattoo from '../components/Art.astro';
+import Art from '../components/Art.astro';
 const pageTitle = "Home Page"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <Greeting client:load messages={ ["Hi", "Hello", "Howdy", "Hey there"] } />
+    <Art imageSource="https://res.cloudinary.com/miishin/image/upload/v1694492699/tattoos/IMG-3321-jpg_efuvq9.jpg" altText="image" description="Static Random Image Get the same random image every time based on a seed, by adding /seed/{seed} to the start of the url."/>
 </BaseLayout>
